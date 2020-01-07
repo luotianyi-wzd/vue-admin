@@ -10,7 +10,7 @@ function hasPermission(roles, route) {
 
 export function filterAsyncRoutes(routes, roles) {
 	const res = []
-	
+
 	routes.forEach(route => {
 		const tmp = {...route}
 		if (hasPermission(roles, tmp)) {
@@ -20,7 +20,7 @@ export function filterAsyncRoutes(routes, roles) {
 			res.push(tmp)
 		}
 	})
-	
+
 	return res
 }
 
@@ -29,9 +29,9 @@ const state = {
 	addRoutes: []
 }
 
-// const getters = {
-// 	permission_routes: state => state.permission.routes
-// }
+const getters = {
+	permission_routes: state => state.routes
+}
 
 const mutations = {
 	SET_ROUTES: (state, routes) => {
@@ -59,6 +59,7 @@ const actions = {
 export default {
 	namespaced: true,  //命名空间
 	state,
+	getters,
 	mutations,
 	actions
 }
