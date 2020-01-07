@@ -1,0 +1,71 @@
+// base color
+@blue:#324157;
+@light-blue:#3A71A8;
+@red:#C03639;
+@pink: #E65D6E;
+@green: #30B08F;
+@tiffany: #4AB7BD;
+@yellow:#FEC171;
+@panGreen: #30B08F;
+@color-red: #ff3333;
+@color-purple: #ff33a9;
+@color-orange: #ff8833;
+@color-blue: #3377ff;
+@color-black: #000;
+@color-dark: #333;
+@color-deep: #555;
+@color-pl: #999999;
+@color-weak: #B3B3B3;
+@color-white: #fff;
+@bg-bar: #F9F9F9;
+@bg-page: #F3F3F3;
+@bg-page-light: #F9F9F9;
+// sidebar
+@menuText:#bfcbd9;
+@menuActiveText:#409EFF;
+@subMenuActiveText:#f4f4f5; // https://github.com/ElemeFE/element/issues/12951
+
+@menuBg:#304156;
+@menuHover:#263445;
+
+@subMenuBg:#1f2d3d;
+@subMenuHover:#001528;
+
+@sideBarWidth: 210px;
+
+//弹性布局
+.flexed(@justify: center, @align: center, @wrap: nowrap) {
+    display: flex;
+    justify-content: @justify;
+    align-items: @align;
+    flex-wrap: @wrap;
+}
+
+//浮动定位
+.positionFiexed(@top: 0, @left: 0) {
+    position: fixed;
+    top: @top;
+    left: @left;
+    z-index: 100;
+}
+
+//超出省略
+.textEllipsis(@line: 2) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @line;
+    overflow: hidden;
+}
+
+
+:export {
+    name: "less";
+    menuText: @menuText;
+    menuActiveText: @menuActiveText;
+    subMenuActiveText: @subMenuActiveText;
+    menuBg: @menuBg;
+    menuHover: @menuHover;
+    subMenuBg: @subMenuBg;
+    subMenuHover: @subMenuHover;
+    sideBarWidth: @sideBarWidth;
+}

@@ -16,9 +16,9 @@ function addStyleResource(rule) {
 		.loader('style-resources-loader')
 		.options({
 			patterns: [
-				path.resolve(__dirname, 'src/styles/common.less'), // 需要全局导入的less
-				// path.resolve(__dirname, 'src/styles/mixin.less'),
-			],
+				path.resolve(__dirname, 'src/styles/variables.less'), // 需要全局导入的less
+				path.resolve(__dirname, 'src/styles/utils.less')
+			]
 		})
 }
 
@@ -28,11 +28,11 @@ module.exports = {
 	filenameHashing: process.env.NODE_ENV === 'development',
 	outputDir: process.env.outputDir,
 	lintOnSave: process.env.NODE_ENV === 'development',
-	
+
 	configureWebpack: (config) => {
 		// 入口文件
 		config.entry = ['babel-polyfill', './src/main.js']
-		//别名
+		// 别名
 		config.resolve.alias = {
 			'@': resolve('src'),
 			'@assets': resolve('src/assets'),
@@ -43,22 +43,22 @@ module.exports = {
 			'@plug': resolve('src/plugins'),
 			'@native': resolve('src/native'),
 			'@utils': resolve('src/utils'),
-			'@styles': resolve('src/styles'),
+			'@styles': resolve('src/styles')
 		}
-		//打包分离
+		// 打包分离
 		config.optimization = {
 			splitChunks: {
 				cacheGroups: {
 					vendor: {
-						chunks: "all",
+						chunks: 'all',
 						test: /node_modules/,
-						name: "chunk-vendors",
+						name: 'chunk-vendors',
 						minChunks: 1,
 						maxInitialRequests: 5,
 						minSize: 0,
-						priority: 100,
-					},
-					/*common: {
+						priority: 100
+					}
+					/* common: {
 						chunks:"all",
 							test:/[\\/]src[\\/]js[\\/]/,
 							name: "common",
@@ -83,24 +83,24 @@ module.exports = {
 		]
 		// 开发环境
 		let pluginsDev = []
-		
+
 		if (process.env.NODE_ENV === 'development') { // 为开发环境修改配置...
 			config.plugins = [...config.plugins, ...pluginsDev]
 		} else { // 为生产环境修改配置...process.env.NODE_ENV !== 'development'
 			config.plugins = [...config.plugins, ...pluginsPro]
 		}*/
 	},
-	
+
 	chainWebpack: config => {
-		config.plugins.delete('preload')   // 移除preload
-		config.plugins.delete('prefetch')  // 移除prefetch
-		
+		config.plugins.delete('preload') // 移除preload
+		config.plugins.delete('prefetch') // 移除prefetch
+
 		config.module
 			.rule('images')
 			.use('url-loader')
-			.tap(options => Object.assign(options, {limit: 500}))
+			.tap(options => Object.assign(options, { limit: 500 }))
 			.end()
-		
+
 		config.module
 			.rule('vue')
 			.use('vue-loader')
@@ -113,7 +113,7 @@ module.exports = {
 		const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
 		types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
 	},
-	
+
 	devServer: {
 		port,
 		https: false,
@@ -136,12 +136,12 @@ module.exports = {
 					'^/api': ''
 				}
 			}
-		},
+		}
 		// after: require('./mock/mock-server.js')
 	},
-	
+
 	css: {
-		extract: true,
+		extract: process.env.NODE_ENV === 'production',
 		loaderOptions: { // 向 CSS 相关的 loader 传递选项
 			less: {
 				javascriptEnabled: true
