@@ -13,7 +13,9 @@
 		<!--				<settings/>-->
 		<!--			</right-panel>-->
 		<!--		</div>-->
-		<router-view/>
+		<div class="main-container">
+			<router-view/>
+		</div>
 	</div>
 </template>
 
