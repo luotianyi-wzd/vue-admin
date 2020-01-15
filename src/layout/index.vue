@@ -1,65 +1,63 @@
 <template>
-    <div class="app-wrapper">
-        <!--		<div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>-->
-        <!--		<sidebar class="sidebar-container"/>-->
-        <sidebar class="sidebar-container"/>
-        <!--		<div :class="{hasTagsView:needTagsView}" class="main-container">-->
-        <!--			<div :class="{'fixed-header':fixedHeader}">-->
-        <!--				<navbar/>-->
-        <!--				<tags-view v-if="needTagsView"/>-->
-        <!--			</div>-->
-        <!--			<app-main/>-->
-        <!--			<right-panel v-if="showSettings">-->
-        <!--				<settings/>-->
-        <!--			</right-panel>-->
-        <!--		</div>-->
-        <div class="main-container">
-            <router-view/>
-        </div>
-    </div>
+	<div :class="classObj" class="app-wrapper">
+		<!--		<div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>-->
+		<!--		<sidebar class="sidebar-container"/>-->
+		<sidebar class="sidebar-container"/>
+		<!--		<div :class="{hasTagsView:needTagsView}" class="main-container">-->
+		<!--			<div :class="{'fixed-header':fixedHeader}">-->
+		<!--				<navbar/>-->
+		<!--				<tags-view v-if="needTagsView"/>-->
+		<!--			</div>-->
+		<!--			<app-main/>-->
+		<!--			<right-panel v-if="showSettings">-->
+		<!--				<settings/>-->
+		<!--			</right-panel>-->
+		<!--		</div>-->
+		<div class="main-container">
+			<el-button @click="toggleSideBar">click</el-button>
+			<router-view/>
+		</div>
+	</div>
 </template>
 
 <script>
-    // import RightPanel from '@/components/RightPanel'
-    // import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
-    import {Sidebar} from "./components"
-    // import ResizeMixin from './mixin/ResizeHandler'
-    // import { mapState } from 'vuex'
-
-    export default {
-        name: 'Layout',
-        components: {
-            // AppMain,
-            // Navbar,
-            // RightPanel,
-            // Settings,
-            Sidebar,
-            // TagsView
-        },
-        // mixins: [ResizeMixin],
-        computed: {
-            /* ...mapState({
-                    sidebar: state => state.app.sidebar,
-                    device: state => state.app.device,
-                    showSettings: state => state.settings.showSettings,
-                    needTagsView: state => state.settings.tagsView,
-                    fixedHeader: state => state.settings.fixedHeader
-                }),
-                classObj() {
-                    return {
-                        hideSidebar: !this.sidebar.opened,
-                        openSidebar: this.sidebar.opened,
-                        withoutAnimation: this.sidebar.withoutAnimation,
-                        mobile: this.device === 'mobile'
-                    }
-                }*/
-        },
-        methods: {
-            handleClickOutside() {
-                this.$store.dispatch('app/closeSideBar', {withoutAnimation: false})
-            }
-        }
-    }
+	import {mapState} from 'vuex'
+	// import RightPanel from '@/components/RightPanel'
+	// import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
+	import {Sidebar} from "./components"
+	// import ResizeMixin from './mixin/ResizeHandler'
+	
+	export default {
+		name: 'Layout',
+		components: {
+			// AppMain,
+			// Navbar,
+			// RightPanel,
+			// Settings,
+			Sidebar,
+			// TagsView
+		},
+		// mixins: [ResizeMixin],
+		computed: {
+			...mapState({
+				sidebar: state => state.app.sidebar,
+			}),
+			classObj() {
+				return {
+					hideSidebar: !this.sidebar.opened,
+					openSidebar: this.sidebar.opened,
+				}
+			}
+		},
+		methods: {
+			handleClickOutside() {
+				this.$store.dispatch('app/closeSideBar', {withoutAnimation: false})
+			},
+			toggleSideBar() {
+				this.$store.dispatch('app/toggleSideBar')
+			},
+		}
+	}
 </script>
 <!--
 

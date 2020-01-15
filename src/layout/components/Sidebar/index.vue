@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<logo :collapse="isCollapse"></logo>
+		<logo :collapse="!sidebar.opened"></logo>
 		<el-menu :default-active="activeMenu"
 		         :background-color="variables.menuBg"
 		         :text-color="variables.menuText"
@@ -8,7 +8,7 @@
 		         :active-text-color="variables.menuActiveText"
 		         :collapse-transition="false"
 		         mode="vertical"
-		         :collapse="isCollapse">
+		         :collapse="!sidebar.opened">
 			<template v-for="item in permission_routes" v-if="!item.hidden">
 				<template v-if="item.children && item.children.length === 1 && !item.hidden">
 					<router-link :to="resolvePath(item.path, item.children[0].path)">
@@ -38,7 +38,7 @@
 
 <script>
 	import path from 'path'
-	import {mapGetters} from 'vuex'
+	import {mapGetters, mapState} from 'vuex'
 	import variables from '@/styles/variables.less'
 	import Logo from './Logo'
 	
@@ -57,6 +57,9 @@
 			...mapGetters('permission', [
 				'permission_routes'
 			]),
+			...mapState({
+				sidebar: state => state.app.sidebar,
+			}),
 			variables() {
 				return variables
 			},
