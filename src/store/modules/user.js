@@ -1,4 +1,4 @@
-import {getToken, setToken, removeToken} from '@utils/auth'
+import { getToken, setToken, removeToken } from '@utils/auth'
 
 const state = {
 	token: getToken(),
@@ -7,7 +7,7 @@ const state = {
 }
 
 const getters = {
-	roles: state => state.roles,
+	roles: state => state.roles
 }
 
 const mutations = {
@@ -25,7 +25,7 @@ const mutations = {
 const actions = {
 	login(context, useInfo) {
 		return new Promise((resolve, reject) => {
-			let token = 'token'
+			const token = 'token'
 			context.commit('SET_TOKEN', token)
 			setToken(token)
 			resolve()
@@ -35,13 +35,13 @@ const actions = {
 		return new Promise((resolve, reject) => {
 			context.commit('SET_ROLES', ['roles'])
 			context.commit('SET_NAME', 'name')
-			resolve({roles: ['roles']})
+			resolve({ roles: ['roles'] })
 		})
 	},
 	resetToken(context, state) {
 		return new Promise(resolve => {
-			commit('SET_TOKEN', '')
-			commit('SET_ROLES', [])
+			context.commit('SET_TOKEN', '')
+			context.commit('SET_ROLES', [])
 			removeToken()
 			resolve()
 		})

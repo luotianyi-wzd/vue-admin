@@ -12,24 +12,24 @@
 </template>
 
 <script>
-	import {mapState, mapGetters} from 'vuex'
-	
+	import { mapState, mapGetters } from 'vuex'
+
 	export default {
 		name: 'Index',
 		data() {
 			return {
-				// goodsList: this.$store.state.goodsList
+			// goodsList: this.$store.state.goodsList
 			}
 		},
 		computed: {
-			/*...mapState([
+			/* ...mapState([
 				'goodsList'
 				//'...'多个state
 			]),*/
 			...mapGetters({
 				goodsList: 'getSaledPrice'
 			})
-			/*goodsList() {
+		/* goodsList() {
 				return this.$store.getters.getSaledPrice
 			}*/
 		},
@@ -44,6 +44,8 @@
 	}
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+  .goods {
+	 
+  }
 </style>

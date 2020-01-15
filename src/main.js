@@ -3,7 +3,6 @@ import App from './App.vue'
 
 import Element from 'element-ui'
 import '@/styles/element-variables.less'
-
 import '@/styles/index.less'
 
 import router from './router'
@@ -12,6 +11,7 @@ import './permission'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
+
 Vue.use(Element, {
 	size: 'medium'
 })
