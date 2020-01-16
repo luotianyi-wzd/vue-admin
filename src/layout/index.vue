@@ -5,7 +5,6 @@
 		<sidebar class="sidebar-container"/>
 		<!--		<div :class="{hasTagsView:needTagsView}" class="main-container">-->
 		<!--			<div :class="{'fixed-header':fixedHeader}">-->
-		<!--				<navbar/>-->
 		<!--				<tags-view v-if="needTagsView"/>-->
 		<!--			</div>-->
 		<!--			<app-main/>-->
@@ -14,6 +13,10 @@
 		<!--			</right-panel>-->
 		<!--		</div>-->
 		<div class="main-container">
+			<div>
+				<navbar/>
+				<tags-view/>
+			</div>
 			<el-button @click="toggleSideBar">click</el-button>
 			<router-view/>
 		</div>
@@ -24,18 +27,18 @@
 	import {mapState} from 'vuex'
 	// import RightPanel from '@/components/RightPanel'
 	// import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
-	import {Sidebar} from "./components"
+	import {Sidebar, Navbar, TagsView} from "./components"
 	// import ResizeMixin from './mixin/ResizeHandler'
 	
 	export default {
 		name: 'Layout',
 		components: {
 			// AppMain,
-			// Navbar,
+			Navbar,
 			// RightPanel,
 			// Settings,
 			Sidebar,
-			// TagsView
+			TagsView
 		},
 		// mixins: [ResizeMixin],
 		computed: {

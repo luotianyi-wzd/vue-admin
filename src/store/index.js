@@ -5,6 +5,7 @@ import moduleA from './modules/goods'
 import permission from './modules/permission'
 import user from './modules/user'
 import app from './modules/app'
+import tagsView from './modules/tagsView'
 
 Vue.use(Vuex)
 
@@ -27,7 +28,8 @@ const store = new Vuex.Store({
 		goodsList: moduleA,
 		permission,
 		user,
-		app
+		app,
+		tagsView
 	}
 })
 
