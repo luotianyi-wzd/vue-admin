@@ -15,7 +15,7 @@
 		</scroll-pane>
 
 		<div class="tags-close-box">
-			<el-dropdown @command="handleTags">
+			<el-dropdown  trigger="click" @command="handleTags">
 				<el-button size="mini" type="success" style="background: #42b983">
 					标签选项<i class="el-icon-arrow-down el-icon--right"/>
 				</el-button>
