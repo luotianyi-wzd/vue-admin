@@ -8,12 +8,15 @@
 		         :active-text-color="variables.menuActiveText"
 		         :collapse-transition="false"
 		         mode="vertical"
-		         :collapse="!sidebar.opened">
+		         :collapse="!sidebar.opened"
+		>
+			
 			<template v-for="item in permission_routes" v-if="!item.hidden">
 				<template v-if="item.children && item.children.length === 1 && !item.hidden">
 					<router-link :to="resolvePath(item.path, item.children[0].path)">
 						<el-menu-item :index="resolvePath(item.path, item.children[0].path)" class="">
-							{{item.children[0].meta.title}}
+							<i class="el-icon-location"></i>
+							<span slot="title">{{item.children[0].meta.title}}</span>
 						</el-menu-item>
 					</router-link>
 				</template>
@@ -45,10 +48,7 @@
 	export default {
 		name: "SideBar",
 		data() {
-			return {
-				isCollapse: true,
-				childList: null
-			}
+			return {}
 		},
 		components: {
 			Logo,
@@ -64,8 +64,7 @@
 				return variables
 			},
 			activeMenu() {
-				const route = this.$route
-				const {path, meta} = route
+				const {path, meta} = this.$route
 				
 				if (meta.activeMenu) {
 					return meta.activeMenu

@@ -1,31 +1,44 @@
 <template>
 	<div class="navbar">
+		<hamburger
+				id="hamburger-container"
+				:is-active="sidebar.opened"
+				class="hamburger-container"
+				@toggleClick="toggleSideBar"
+		/>
+		<breadcrumb id="breadcrumb-container" class="breadcrumb-container"></breadcrumb>
 		<div class="right-menu">
-			<template v-if="device!=='mobile'">
+			<screenfull class="right-menu-item hover-effect"/>
+			<template>
 				<div class="right-menu-item hover-effect">
-					<router-link :to="'/message/index'">
-						消息
-					</router-link>
+					<el-tooltip
+							effect="dark"
+							:content="message?`有${message}条未读消息`:`消息中心`"
+							placement="bottom"
+					>
+						<router-link to="/message/index">
+							<i class="el-icon-bell"></i>
+						</router-link>
+					</el-tooltip>
+					<span class="btn-bell-badge" v-if="message"></span>
 				</div>
 			</template>
-			
+			<template>
+			</template>
 			<el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
 				<div class="avatar-wrapper">
-					用户名
+					<el-avatar class="user-avatar" icon="el-icon-user-solid" size="small"></el-avatar>
+					<p>
+						用户名
+					</p>
 					<i class="el-icon-caret-bottom"/>
 				</div>
 				<el-dropdown-menu slot="dropdown">
-					<!--          <router-link to="/profile/index">-->
-					<!--            <el-dropdown-item>-->
-					<!--              {{ $t('navbar.profile') }}-->
-					<!--            </el-dropdown-item>-->
-					<!--          </router-link>-->
-					<router-link to="/">
+					<router-link to="/profile/index">
 						<el-dropdown-item>
-							首页
+							个人中心
 						</el-dropdown-item>
 					</router-link>
-					
 					<router-link to="/changePassword">
 						<el-dropdown-item>
 							修改密码
@@ -41,15 +54,26 @@
 </template>
 
 <script>
-	import {mapGetters} from 'vuex'
+	import {mapState} from 'vuex'
+	import Hamburger from '@/components/Hamburger'
+	import Breadcrumb from '@/components/Breadcrumb'
+	import Screenfull from '@/components/Screenfull'
 	
 	export default {
-		components: {},
+		data() {
+			return {
+				message: 11,
+			}
+		},
+		components: {
+			Hamburger,
+			Breadcrumb,
+			Screenfull
+		},
 		computed: {
-			...mapGetters([
-				'sidebar',
-				'avatar',
-			])
+			...mapState({
+				sidebar: state => state.app.sidebar,
+			})
 		},
 		methods: {
 			toggleSideBar() {
@@ -58,7 +82,7 @@
 			async logout() {
 				await this.$store.dispatch('user/logout')
 				this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-			}
+			},
 		}
 	}
 </script>
@@ -88,6 +112,17 @@
 			float: left;
 		}
 		
+		.btn-bell-badge {
+			position: absolute;
+			right: 4px;
+			top: 13px;
+			width: 8px;
+			height: 8px;
+			border-radius: 4px;
+			background: #f56c6c;
+			color: #fff;
+		}
+		
 		.errLog-container {
 			display: inline-block;
 			vertical-align: top;
@@ -103,6 +138,7 @@
 			}
 			
 			.right-menu-item {
+				position: relative;
 				display: inline-block;
 				padding: 0 8px;
 				height: 100%;
@@ -124,21 +160,11 @@
 				margin-right: 30px;
 				
 				.avatar-wrapper {
-					position: relative;
+					.flexed();
+					font-size: 14px;
 					
 					.user-avatar {
-						cursor: pointer;
-						width: 40px;
-						height: 40px;
-						border-radius: 10px;
-					}
-					
-					.el-icon-caret-bottom {
-						cursor: pointer;
-						position: absolute;
-						right: -20px;
-						top: 25px;
-						font-size: 12px;
+						margin-right: 10px;
 					}
 				}
 			}

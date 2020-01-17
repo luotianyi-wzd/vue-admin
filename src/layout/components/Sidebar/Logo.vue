@@ -24,8 +24,8 @@
 		},
 		data() {
 			return {
-				title: '后台管理系统',
-				logo: ''
+				title: '管理系统',
+				logo: require('@assets/images/logo.png')
 			}
 		}
 	}

@@ -15,7 +15,7 @@ export const constantRoutes = [
 				path: 'dashboard',
 				component: () => import('@/views/dashboard/index'),
 				name: 'Dashboard',
-				meta: {title: 'dashboard', icon: 'dashboard', affix: true}
+				meta: {title: '首页', icon: 'dashboard', affix: true}
 			}
 		]
 	},
@@ -42,8 +42,9 @@ export const constantRoutes = [
 		alwaysShow: true, // will always show the root menu
 		name: 'Goods',
 		meta: {
-			title: 'goods',
+			title: '商品管理',
 			icon: 'lock',
+			noCache: true,
 			roles: ['admin', 'editor'] // you can set roles in root nav
 		},
 		children: [
@@ -52,7 +53,8 @@ export const constantRoutes = [
 				component: () => import('@/views/goods/page'),
 				name: 'GoodsPage',
 				meta: {
-					title: 'pageGoods',
+					title: '商品列表1',
+					oCache: true,
 					roles: ['admin'] // or you can only set roles in sub nav
 				}
 			},
@@ -61,7 +63,7 @@ export const constantRoutes = [
 				component: () => import('@/views/goods/page'),
 				name: 'GoodsPage',
 				meta: {
-					title: 'pageGoods',
+					title: '商品列表2',
 					roles: ['admin'] // or you can only set roles in sub nav
 				}
 			}
@@ -76,7 +78,7 @@ export const asyncRoutes = [
 		redirect: '/permission/page',
 		alwaysShow: true, // will always show the root menu
 		meta: {
-			title: 'permission',
+			title: '权限管理',
 			icon: 'lock',
 			roles: ['admin', 'editor'] // you can set roles in root nav
 		},
@@ -84,9 +86,9 @@ export const asyncRoutes = [
 			{
 				path: 'page',
 				component: () => import('@/views/permission/page'),
-				name: 'xxxx',
+				name: 'PermissionPage',
 				meta: {
-					title: 'pagePermission',
+					title: '权限管理',
 					roles: ['admin'] // or you can only set roles in sub nav
 				}
 			}
