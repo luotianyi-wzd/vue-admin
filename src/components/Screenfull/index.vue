@@ -1,14 +1,14 @@
 <template>
 	<div class="fullscreen" @click="handleFullScreen">
 		<el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
-			<i class="el-icon-rank"></i>
+			<i class="el-icon-rank" />
 		</el-tooltip>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: "index",
+		name: 'Index',
 		data() {
 			return {
 				fullscreen: true

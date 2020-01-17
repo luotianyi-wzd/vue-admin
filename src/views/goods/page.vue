@@ -46,6 +46,6 @@
 
 <style scoped lang="less">
   .goods {
-	 
+
   }
 </style>

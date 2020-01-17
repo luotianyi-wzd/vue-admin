@@ -15,7 +15,7 @@ export const constantRoutes = [
 				path: 'dashboard',
 				component: () => import('@/views/dashboard/index'),
 				name: 'Dashboard',
-				meta: {title: '首页', icon: 'dashboard', affix: true}
+				meta: { title: '首页', icon: 'dashboard', affix: true }
 			}
 		]
 	},
@@ -23,7 +23,7 @@ export const constantRoutes = [
 		path: '/login',
 		component: () => import('@/views/login/index'),
 		meta: {
-			title: 'login',
+			title: 'login'
 		},
 		hidden: true
 	},
@@ -31,7 +31,7 @@ export const constantRoutes = [
 		path: '/404',
 		component: () => import('@/views/error-page/404'),
 		meta: {
-			title: '404',
+			title: '404'
 		},
 		hidden: true
 	},
@@ -97,7 +97,7 @@ export const asyncRoutes = [
 ]
 
 const createRouter = () => new Router({
-	scrollBehavior: () => ({y: 0}),
+	scrollBehavior: () => ({ y: 0 }),
 	routes: constantRoutes
 })
 

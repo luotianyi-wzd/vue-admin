@@ -1,7 +1,7 @@
 <template>
 	<el-breadcrumb class="app-breadcrumb" separator="/">
 		<el-breadcrumb-item v-for="item in list" :key="item.path">
-			{{item.meta.title}}
+			{{ item.meta.title }}
 		</el-breadcrumb-item>
 	</el-breadcrumb>
 </template>
@@ -35,7 +35,7 @@
 		font-size: 14px;
 		line-height: 50px;
 		margin-left: 8px;
-		
+
 		.no-redirect {
 			color: #97a8be;
 			cursor: text;

@@ -1,9 +1,8 @@
 
-
 const state = {
 	sidebar: {
 		opened: true
-	},
+	}
 }
 
 const mutations = {
@@ -12,9 +11,8 @@ const mutations = {
 	}
 }
 
-
 const actions = {
-	toggleSideBar({commit}) {
+	toggleSideBar({ commit }) {
 		commit('TOGGLE_SIDEBAR')
 	}
 }
