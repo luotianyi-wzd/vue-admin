@@ -6,9 +6,9 @@
 			class="hamburger-container"
 			@toggleClick="toggleSideBar"
 		/>
-		<breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
+		<breadcrumb id="breadcrumb-container" class="breadcrumb-container"/>
 		<div class="right-menu">
-			<screenfull class="right-menu-item hover-effect" />
+			<screenfull class="right-menu-item hover-effect"/>
 			<template>
 				<div class="right-menu-item hover-effect">
 					<el-tooltip
@@ -17,20 +17,20 @@
 						placement="bottom"
 					>
 						<router-link to="/message/index">
-							<i class="el-icon-bell" />
+							<i class="el-icon-bell"/>
 						</router-link>
 					</el-tooltip>
-					<span v-if="message" class="btn-bell-badge" />
+					<span v-if="message" class="btn-bell-badge"/>
 				</div>
 			</template>
-			<template />
+			<template/>
 			<el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
 				<div class="avatar-wrapper">
-					<el-avatar class="user-avatar" icon="el-icon-user-solid" size="small" />
+					<el-avatar class="user-avatar" icon="el-icon-user-solid" size="small"/>
 					<p>
 						用户名
 					</p>
-					<i class="el-icon-caret-bottom" />
+					<i class="el-icon-caret-bottom"/>
 				</div>
 				<el-dropdown-menu slot="dropdown">
 					<router-link to="/profile/index">
@@ -59,16 +59,16 @@
 	import Screenfull from '@/components/Screenfull'
 
 	export default {
-	components: {
-		Hamburger,
-		Breadcrumb,
-		Screenfull
-	},
-	data() {
-		return {
-			message: 11
-		}
-	},
+		components: {
+			Hamburger,
+			Breadcrumb,
+			Screenfull
+		},
+		data() {
+			return {
+				message: 11
+			}
+		},
 		computed: {
 			...mapState({
 				sidebar: state => state.app.sidebar

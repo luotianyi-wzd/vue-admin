@@ -1,7 +1,7 @@
 <template>
 	<div class="fullscreen" @click="handleFullScreen">
-		<el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
-			<i class="el-icon-rank" />
+		<el-tooltip effect="dark" :content="fullscreen ? `取消全屏` : `全屏`" placement="bottom">
+			<i class="el-icon-rank"/>
 		</el-tooltip>
 	</div>
 </template>
@@ -11,13 +11,12 @@
 		name: 'Index',
 		data() {
 			return {
-				fullscreen: true
+				fullscreen: false
 			}
 		},
 		methods: {
 			handleFullScreen() {
-				console.log(123123)
-				let element = document.documentElement
+				const element = document.documentElement
 				if (this.fullscreen) {
 					if (document.exitFullscreen) {
 						document.exitFullscreen()

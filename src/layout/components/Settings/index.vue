@@ -5,22 +5,22 @@
 
 			<div class="drawer-item">
 				<span>{{ $t('settings.theme') }}</span>
-				<theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange" />
+				<theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange"/>
 			</div>
 
 			<div class="drawer-item">
 				<span>{{ $t('settings.tagsView') }}</span>
-				<el-switch v-model="tagsView" class="drawer-switch" />
+				<el-switch v-model="tagsView" class="drawer-switch"/>
 			</div>
 
 			<div class="drawer-item">
 				<span>{{ $t('settings.fixedHeader') }}</span>
-				<el-switch v-model="fixedHeader" class="drawer-switch" />
+				<el-switch v-model="fixedHeader" class="drawer-switch"/>
 			</div>
 
 			<div class="drawer-item">
 				<span>{{ $t('settings.sidebarLogo') }}</span>
-				<el-switch v-model="sidebarLogo" class="drawer-switch" />
+				<el-switch v-model="sidebarLogo" class="drawer-switch"/>
 			</div>
 
 		</div>
@@ -28,60 +28,60 @@
 </template>
 
 <script>
-import ThemePicker from '@/components/ThemePicker'
+	import ThemePicker from '@/components/ThemePicker'
 
-export default {
-	components: { ThemePicker },
-	data() {
-		return {}
-	},
-	computed: {
+	export default {
+		components: { ThemePicker },
+		data() {
+			return {}
+		},
+		computed: {
 			isShowJob() {
-			return this.$store.getters.language === 'zh'
+				return this.$store.getters.language === 'zh'
 			},
 			fixedHeader: {
-			get() {
+				get() {
 					return this.$store.state.settings.fixedHeader
 				},
 				set(val) {
 					this.$store.dispatch('settings/changeSetting', {
-					key: 'fixedHeader',
-					value: val
+						key: 'fixedHeader',
+						value: val
 					})
 				}
 			},
 			tagsView: {
-			get() {
+				get() {
 					return this.$store.state.settings.tagsView
-			},
+				},
 				set(val) {
 					this.$store.dispatch('settings/changeSetting', {
 						key: 'tagsView',
 						value: val
-				})
+					})
 				}
 			},
 			sidebarLogo: {
-			get() {
+				get() {
 					return this.$store.state.settings.sidebarLogo
 				},
-			set(val) {
-				this.$store.dispatch('settings/changeSetting', {
-					key: 'sidebarLogo',
+				set(val) {
+					this.$store.dispatch('settings/changeSetting', {
+						key: 'sidebarLogo',
 						value: val
-				})
+					})
+				}
 			}
-			}
-	},
+		},
 		methods: {
 			themeChange(val) {
 				this.$store.dispatch('settings/changeSetting', {
 					key: 'theme',
-				value: val
-			})
+					value: val
+				})
+			}
 		}
-		}
-}
+	}
 </script>
 
 <style lang="scss" scoped>
