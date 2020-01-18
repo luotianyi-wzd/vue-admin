@@ -98,7 +98,7 @@ module.exports = {
 		config.module
 			.rule('images')
 			.use('url-loader')
-			.tap(options => Object.assign(options, { limit: 500 }))
+			.tap(options => Object.assign(options, {limit: 500}))
 			.end()
 
 		config.module

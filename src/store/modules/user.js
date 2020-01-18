@@ -1,4 +1,4 @@
-import { getToken, setToken, removeToken } from '@utils/auth'
+import {getToken, setToken, removeToken} from '@utils/auth'
 
 const state = {
 	token: getToken(),
@@ -35,7 +35,7 @@ const actions = {
 		return new Promise((resolve, reject) => {
 			context.commit('SET_ROLES', ['roles'])
 			context.commit('SET_NAME', 'name')
-			resolve({ roles: ['roles'] })
+			resolve({roles: ['roles']})
 		})
 	},
 	resetToken(context, state) {

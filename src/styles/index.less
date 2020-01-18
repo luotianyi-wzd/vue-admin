@@ -11,7 +11,26 @@
 
 .main-container {
     width: 100%;
-    overflow: auto;
     margin-left: @sideBarWidth + 2;
+    overflow: auto;
+    background: #f0f0f0;
+    padding-top: 85px;
 }
 
+.content-container {
+    position: relative;
+    margin: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    width: calc(100% - @sideBarWidth);
+    transition: width 0.28s;
+}

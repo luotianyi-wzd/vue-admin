@@ -1,9 +1,9 @@
 const state = {
 	goodsList: [
-		{ name: 'goods 1', price: 100 },
-		{ name: 'goods 2', price: 200 },
-		{ name: 'goods 3', price: 300 },
-		{ name: 'goods 3', price: 400 }
+		{name: 'goods 1', price: 100},
+		{name: 'goods 2', price: 200},
+		{name: 'goods 3', price: 300},
+		{name: 'goods 3', price: 400}
 	]
 }
 

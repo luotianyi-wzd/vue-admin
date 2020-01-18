@@ -21,7 +21,7 @@ const mutations = {
 		}
 	},
 	DEL_ALL_VISITED_VIEW: state => {
-		state.visitedViews  = state.visitedViews.filter(tag => tag.meta.affix)
+		state.visitedViews = state.visitedViews.filter(tag => tag.meta.affix)
 	},
 	DEL_OTHERS_VISITED_VIEW: (state, view) => {
 		state.visitedViews = state.visitedViews.filter(tag => {
@@ -31,25 +31,25 @@ const mutations = {
 }
 
 const actions = {
-	addVisitedView({ commit }, view) {
+	addVisitedView({commit}, view) {
 		commit('ADD_VISITED_VIEW', view)
 	},
-	delVisitedView({ commit, state }, view) {
+	delVisitedView({commit, state}, view) {
 		return new Promise(resolve => {
 			commit('DEL_VISITED_VIEW', view)
-			resolve({ visitedViews: [...state.visitedViews] })
+			resolve({visitedViews: [...state.visitedViews]})
 		})
 	},
-	delAllVisitedView({ commit, state }) {
+	delAllVisitedView({commit, state}) {
 		return new Promise(resolve => {
 			commit('DEL_ALL_VISITED_VIEW')
-			resolve({ visitedViews: [...state.visitedViews] })
+			resolve({visitedViews: [...state.visitedViews]})
 		})
 	},
-	delOthersVisitedView({ commit, state }, view) {
+	delOthersVisitedView({commit, state}, view) {
 		return new Promise(resolve => {
 			commit('DEL_OTHERS_VISITED_VIEW', view)
-			resolve({ visitedViews: [...state.visitedViews] })
+			resolve({visitedViews: [...state.visitedViews]})
 		})
 	}
 }

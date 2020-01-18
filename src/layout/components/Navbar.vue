@@ -1,10 +1,10 @@
 <template>
 	<div class="navbar">
 		<hamburger
-			id="hamburger-container"
-			:is-active="sidebar.opened"
-			class="hamburger-container"
-			@toggleClick="toggleSideBar"
+				id="hamburger-container"
+				:is-active="sidebar.opened"
+				class="hamburger-container"
+				@toggleClick="toggleSideBar"
 		/>
 		<breadcrumb id="breadcrumb-container" class="breadcrumb-container"/>
 		<div class="right-menu">
@@ -12,9 +12,9 @@
 			<template>
 				<div class="right-menu-item hover-effect">
 					<el-tooltip
-						effect="dark"
-						:content="message?`有${message}条未读消息`:`消息中心`"
-						placement="bottom"
+							effect="dark"
+							:content="message?`有${message}条未读消息`:`消息中心`"
+							placement="bottom"
 					>
 						<router-link to="/message/index">
 							<i class="el-icon-bell"/>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-	import { mapState } from 'vuex'
+	import {mapState} from 'vuex'
 	import Hamburger from '@/components/Hamburger'
 	import Breadcrumb from '@/components/Breadcrumb'
 	import Screenfull from '@/components/Screenfull'

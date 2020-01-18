@@ -38,7 +38,7 @@ module.exports = {
 			}
 		],
 		"vue/html-indent": ["error", "tab", {
-			"attribute": 1,
+			"attribute": 2,
 			"baseIndent": 1,
 			"closeBracket": 0,
 			"alignAttributesVertically": true,
@@ -219,7 +219,7 @@ module.exports = {
 		"yoda": [2, "never"],
 		"prefer-const": 2,
 		"no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
-		"object-curly-spacing": [2, "always", {
+		"object-curly-spacing": [2, "never", {
 			objectsInObjects: false
 		}],
 		"array-bracket-spacing": [2, "never"]

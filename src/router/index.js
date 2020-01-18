@@ -15,7 +15,7 @@ export const constantRoutes = [
 				path: 'dashboard',
 				component: () => import('@/views/dashboard/index'),
 				name: 'Dashboard',
-				meta: { title: '首页', icon: 'dashboard', affix: true }
+				meta: {title: '首页', icon: 'dashboard', affix: true}
 			}
 		]
 	},
@@ -28,12 +28,38 @@ export const constantRoutes = [
 		hidden: true
 	},
 	{
-		path: '/404',
-		component: () => import('@/views/error-page/404'),
+		path: '/table',
+		component: Layout,
+		redirect: '/table/baseTable',
+		alwaysShow: true, // will always show the root menu
+		name: 'Table',
 		meta: {
-			title: '404'
+			title: '表格',
+			icon: 'lock',
+			noCache: true,
+			roles: ['admin', 'editor'] // you can set roles in root nav
 		},
-		hidden: true
+		children: [
+			{
+				path: 'baseTable',
+				component: () => import('@/views/table/baseTable'),
+				name: 'BaseTable',
+				meta: {
+					title: '基础表格',
+					oCache: true,
+					roles: ['admin'] // or you can only set roles in sub nav
+				}
+			},
+			{
+				path: 'highTable',
+				component: () => import('@/views/table/highTable'),
+				name: 'HighTable',
+				meta: {
+					title: '高级表格',
+					roles: ['admin'] // or you can only set roles in sub nav
+				}
+			}
+		]
 	},
 	{
 		path: '/goods',
@@ -68,6 +94,14 @@ export const constantRoutes = [
 				}
 			}
 		]
+	},
+	{
+		path: '/404',
+		component: () => import('@/views/error-page/404'),
+		meta: {
+			title: '404'
+		},
+		hidden: true
 	}
 ]
 
@@ -97,7 +131,7 @@ export const asyncRoutes = [
 ]
 
 const createRouter = () => new Router({
-	scrollBehavior: () => ({ y: 0 }),
+	scrollBehavior: () => ({y: 0}),
 	routes: constantRoutes
 })
 
