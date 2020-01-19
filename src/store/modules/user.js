@@ -45,6 +45,15 @@ const actions = {
 			removeToken()
 			resolve()
 		})
+	},
+	logout({commit, state, dispatch}) {
+		return new Promise((resolve) => {
+			commit('SET_TOKEN', '')
+			commit('SET_ROLES', [])
+			removeToken()
+			dispatch('tagsView/delAllVisitedView', null, {root: true})
+			resolve()
+		})
 	}
 }
 

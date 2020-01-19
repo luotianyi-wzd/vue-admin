@@ -11,7 +11,7 @@ const whiteList = ['/login', '/auth-redirect']
 
 router.beforeEach(async(to, from, next) => {
 	NProgress.start()
-	document.title = to.meta.title
+	document.title = '管理后台 - ' + to.meta.title
 
 	const hasToken = getToken()
 

@@ -119,6 +119,7 @@ module.exports = {
 		https: false,
 		open: false, // 配置自动启动浏览器
 		hotOnly: true, // 热更新
+		hot: true,
 		overlay: {
 			warnings: false,
 			errors: true

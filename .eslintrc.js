@@ -51,6 +51,15 @@ module.exports = {
 			"endTag": "never",
 			"selfClosingTag": "never"
 		}],
+		"vue/html-self-closing": ["never", {
+			"html": {
+				"void": "never",
+				"normal": "always",
+				"component": "always"
+			},
+			"svg": "always",
+			"math": "always"
+		}],
 		"vue/name-property-casing": ["error", "PascalCase"],
 		"vue/no-v-html": "off",
 		"accessor-pairs": 2,  // 定义对象的set存取器属性时，强制定义get

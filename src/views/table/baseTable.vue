@@ -1,35 +1,51 @@
 <template>
 	<div>
+		<div style="marginBottom: 30px;">
+			<el-button @click="handleDelete">删除</el-button>
+		</div>
 		<el-table
 				:data="tableData"
 				border
-				style="width: 100%; marginBottom: 30px">
+				style="width: 100%"
+		>
+			<el-table-column
+					type="selection"
+					align="center"
+					width="65"
+			>
+			</el-table-column>
 			<el-table-column
 					prop="date"
 					label="日期"
-					width="180">
+					width="180"
+			>
 			</el-table-column>
 			<el-table-column
 					prop="name"
 					label="姓名"
-					width="180">
+					width="180"
+			>
 			</el-table-column>
 			<el-table-column
 					prop="address"
-					label="地址">
+					label="地址"
+			>
 			</el-table-column>
 			<el-table-column
 					prop="desc"
-					label="描述">
+					label="描述"
+			>
 			</el-table-column>
 			<el-table-column
 					label="标签"
 					width="100"
-				>
+			>
 				<template slot-scope="scope">
 					<el-tag
 							:type="scope.row.tag === '家' ? 'primary' : 'success'"
-							disable-transitions>{{scope.row.tag}}</el-tag>
+							disable-transitions
+					>{{ scope.row.tag }}
+					</el-tag>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -37,7 +53,8 @@
 			<el-pagination
 					background
 					layout="prev, pager, next"
-					:total="1000">
+					:total="1000"
+			>
 			</el-pagination>
 		</div>
 	</div>
@@ -73,12 +90,14 @@
 					tag: '公司'
 				}]
 			}
+		},
+		methods: {
+			handleDelete() {
+				this.$message({
+					message: '删除了',
+					type: 'warning'
+				})
+			}
 		}
 	}
 </script>
-
-<style lang="less">
-	.pagination {
-		text-align: right;
-	}
-</style>

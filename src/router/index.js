@@ -15,7 +15,7 @@ export const constantRoutes = [
 				path: 'dashboard',
 				component: () => import('@/views/dashboard/index'),
 				name: 'Dashboard',
-				meta: {title: '首页', icon: 'dashboard', affix: true}
+				meta: {title: '首页', icon: 's-home', affix: true}
 			}
 		]
 	},
@@ -28,6 +28,24 @@ export const constantRoutes = [
 		hidden: true
 	},
 	{
+		path: '/message',
+		component: Layout,
+		redirect: '/message/index',
+		name: 'Message',
+		hidden: true,
+		children: [
+			{
+				path: 'index',
+				component: () => import('@/views/message/index'),
+				name: 'MessageIndex',
+				meta: {
+					title: '消息',
+					noCache: true
+				}
+			}
+		]
+	},
+	{
 		path: '/table',
 		component: Layout,
 		redirect: '/table/baseTable',
@@ -35,7 +53,7 @@ export const constantRoutes = [
 		name: 'Table',
 		meta: {
 			title: '表格',
-			icon: 'lock',
+			icon: 's-grid',
 			noCache: true,
 			roles: ['admin', 'editor'] // you can set roles in root nav
 		},
@@ -46,7 +64,7 @@ export const constantRoutes = [
 				name: 'BaseTable',
 				meta: {
 					title: '基础表格',
-					oCache: true,
+					noCache: true,
 					roles: ['admin'] // or you can only set roles in sub nav
 				}
 			},
@@ -56,6 +74,46 @@ export const constantRoutes = [
 				name: 'HighTable',
 				meta: {
 					title: '高级表格',
+					roles: ['admin'] // or you can only set roles in sub nav
+				}
+			}
+		]
+	},
+	{
+		path: '/icon',
+		component: Layout,
+		redirect: '/icon/page',
+		alwaysShow: true, // will always show the root menu
+		name: 'Icon',
+		children: [
+			{
+				path: 'page',
+				component: () => import('@/views/icon/index'),
+				name: 'IconPage',
+				meta: {
+					title: '图标',
+					oCache: true,
+					icon: 'picture',
+					roles: ['admin'] // or you can only set roles in sub nav
+				}
+			}
+		]
+	},
+	{
+		path: '/echarts',
+		component: Layout,
+		redirect: '/echarts/page',
+		alwaysShow: true, // will always show the root menu
+		name: 'Echarts',
+		children: [
+			{
+				path: 'page',
+				component: () => import('@/views/echarts/index'),
+				name: 'Page',
+				meta: {
+					title: '图表',
+					icon: 's-data',
+					noCache: true,
 					roles: ['admin'] // or you can only set roles in sub nav
 				}
 			}

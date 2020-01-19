@@ -31,6 +31,8 @@
 				this.$store.dispatch('user/login')
 					.then(() => {
 						this.$router.push({path: this.redirect || '/', query: this.otherQuery})
+					}).catch(err => {
+						return err
 					})
 			},
 			getOtherQuery(query) {
