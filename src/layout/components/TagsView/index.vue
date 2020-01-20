@@ -145,6 +145,7 @@
 		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
 
 		.tags-view-wrapper {
+			width: calc(100% - 100px);
 			.tags-view-item {
 				display: inline-block;
 				position: relative;

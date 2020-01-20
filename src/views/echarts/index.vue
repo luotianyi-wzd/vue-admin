@@ -63,7 +63,7 @@
 
 <style scoped lang="less">
 	.myChart {
-		width: 95%;
+		width: 50%;
 		height: 300px;
 		margin: 20px auto;
 		border: 1px solid #CCC

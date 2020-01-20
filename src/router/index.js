@@ -46,6 +46,24 @@ export const constantRoutes = [
 		]
 	},
 	{
+		path: '/profile',
+		component: Layout,
+		redirect: '/profile/index',
+		name: 'Profile',
+		hidden: true,
+		children: [
+			{
+				path: 'index',
+				component: () => import('@/views/profile/index'),
+				name: 'ProfileIndex',
+				meta: {
+					title: '个人中心',
+					noCache: true
+				}
+			}
+		]
+	},
+	{
 		path: '/table',
 		component: Layout,
 		redirect: '/table/baseTable',
@@ -93,7 +111,7 @@ export const constantRoutes = [
 				meta: {
 					title: '图标',
 					oCache: true,
-					icon: 'picture',
+					icon: 'camera',
 					roles: ['admin'] // or you can only set roles in sub nav
 				}
 			}
